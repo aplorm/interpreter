@@ -1,10 +1,11 @@
 {
-    "name": "aplorm/lexer",
-    "description": "Lexer for aplorm",
+    "name": "aplorm/interpreter",
+    "description": "interpreter for aplorm",
     "type": "library",
     "require": {
         "php": "7.4.3",
-        "aplorm/common": "dev-master"
+        "aplorm/common": "dev-master",
+        "aplorm/lexer": "dev-master"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
@@ -20,18 +21,22 @@
     ],
     "autoload": {
         "psr-4": {
-            "Aplorm\\Lexer\\": "src/"
+            "Aplorm\\Interpreter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Aplorm\\Lexer\\Tests\\": "Tests/"
+            "Aplorm\\Interpreter\\Tests\\": "Tests/"
         }
     },
     "repositories": [
         {
             "type": "vcs",
             "url": "https://github.com/aplorm/common"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/aplorm/lexer"
         }
     ]
 }
