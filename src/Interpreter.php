@@ -12,12 +12,12 @@ declare(strict_types=1);
 
 namespace Aplorm\Interpreter;
 
-use Aplorm\Lexer\Exception\ClassNotFoundException;
-use Aplorm\Lexer\Exception\ClassPartNotFoundException;
-use Aplorm\Lexer\Exception\ConstantNotFoundException;
-use Aplorm\Lexer\Exception\InvalidAnnotationConfigurationException;
-use Aplorm\Common\Lexer\LexedPartInterface;
 use Aplorm\Common\Interpreter\TypeInterface;
+use Aplorm\Common\Lexer\LexedPartInterface;
+use Aplorm\Interpreter\Exception\ClassNotFoundException;
+use Aplorm\Interpreter\Exception\ClassPartNotFoundException;
+use Aplorm\Interpreter\Exception\ConstantNotFoundException;
+use Aplorm\Interpreter\Exception\InvalidAnnotationConfigurationException;
 
 class Interpreter
 {
