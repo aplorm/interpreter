@@ -15,9 +15,7 @@ namespace Aplorm\Interpreter\Tests\Sample;
 use Aplorm\Interpreter\Exception\ClassNotFoundException;
 use Aplorm\Interpreter\Tests\Sample\SampleClass;
 use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation11;
-use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation2;
 use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation3;
-use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation4;
 use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation5;
 use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation6;
 use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation7;
@@ -29,23 +27,24 @@ use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation;
  * class comment.
  *
  * @Annotation
- * @Annotation2({
+ * @Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation2({
  *     "key.1": 1,
  *     "key.2": "string",
  *     "key.3": SampleClass::A_CONSTANT,
  *     "key.4": @Annotation3(@Annotation11({1, 2, 3, 4})),
  *     "key.5": true
  * })
- * @Annotation4("param")
+ * @TestAnnotations\Annotation4("param")
  * @Annotation5(1)
  * @Annotation6(true)
  * @Annotation7(self::A_CONSTANT)
  * @Annotation7(SampleClass::A_CONSTANT)
  * @Annotation8(1, 2, 3, 4)
+ * @Annotation9(name="bla")
  */
 class InterpreterClassTest
 {
-    public const A_CONSTANT = 'self constant';
+    public const A_CONSTANT = 'self constant value';
 
     public static $astatic = 1;
 
@@ -60,6 +59,7 @@ class InterpreterClassTest
 
     // line comment
     private string $string = 'une string avec des espaces';
+    private string $string2 = self::A_CONSTANT;
 
     public $docBloc = <<<'EOD'
 /**
@@ -104,7 +104,7 @@ FOOBAR;
      *
      * @Annotation9(name="bla")
      */
-    public function mafunction(string $param1, array $param2): bool
+    public function mafunction(string $param1 = self::A_CONSTANT, bool $param2 = true): bool
     {
         if (true) {
         }

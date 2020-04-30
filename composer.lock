@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aplorm/common.git",
-                "reference": "f2e6628bc1d6ae3b19874d8dc1898607931fa27f"
+                "reference": "4e1c459af0e8f7511f70657d6a5265e71f902083"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aplorm/common/zipball/f2e6628bc1d6ae3b19874d8dc1898607931fa27f",
-                "reference": "f2e6628bc1d6ae3b19874d8dc1898607931fa27f",
+                "url": "https://api.github.com/repos/aplorm/common/zipball/4e1c459af0e8f7511f70657d6a5265e71f902083",
+                "reference": "4e1c459af0e8f7511f70657d6a5265e71f902083",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "source": "https://github.com/aplorm/common/tree/master",
                 "issues": "https://github.com/aplorm/common/issues"
             },
-            "time": "2020-04-28T11:43:20+00:00"
+            "time": "2020-04-30T17:13:33+00:00"
         },
         {
             "name": "aplorm/lexer",
@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aplorm/lexer.git",
-                "reference": "e70f29b5742b6f90d0000431b9f8fd75060e6aa9"
+                "reference": "bebe5896b90a88cdff178019a0a9ad666394e488"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aplorm/lexer/zipball/e70f29b5742b6f90d0000431b9f8fd75060e6aa9",
-                "reference": "e70f29b5742b6f90d0000431b9f8fd75060e6aa9",
+                "url": "https://api.github.com/repos/aplorm/lexer/zipball/bebe5896b90a88cdff178019a0a9ad666394e488",
+                "reference": "bebe5896b90a88cdff178019a0a9ad666394e488",
                 "shasum": ""
             },
             "require": {
@@ -103,7 +103,7 @@
                 "source": "https://github.com/aplorm/lexer/tree/master",
                 "issues": "https://github.com/aplorm/lexer/issues"
             },
-            "time": "2020-04-28T11:48:44+00:00"
+            "time": "2020-04-30T17:04:22+00:00"
         }
     ],
     "packages-dev": [
