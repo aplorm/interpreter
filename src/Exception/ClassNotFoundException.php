@@ -16,7 +16,7 @@ use Exception;
 
 class ClassNotFoundException extends Exception
 {
-    private const CODE = 0X4C37;
+    private const CODE = 0X491;
 
     public function __construct(string $alias, string $inClass)
     {

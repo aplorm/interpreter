@@ -18,6 +18,7 @@ use Aplorm\Interpreter\Exception\ClassNotFoundException;
 use Aplorm\Interpreter\Exception\ClassPartNotFoundException;
 use Aplorm\Interpreter\Exception\ConstantNotFoundException;
 use Aplorm\Interpreter\Exception\InvalidAnnotationConfigurationException;
+use Aplorm\Interpreter\Exception\WrongAnnotationTypeException;
 use Aplorm\Interpreter\Interpreter;
 use Aplorm\Lexer\Lexer\Lexer;
 
@@ -48,7 +49,7 @@ class FailTest extends AbstractTest
     /**
      * @dataProvider classFileProvider
      *
-     * @param string $fileName
+     * @param string                   $fileName
      * @param class-string<\Throwable> $exception
      */
     public function testInvalidClass($fileName, $exception): void
@@ -62,9 +63,9 @@ class FailTest extends AbstractTest
     /**
      * @dataProvider classPartNotFoundProvider
      *
-     * @param string $fileName
+     * @param string                   $fileName
      * @param class-string<\Throwable> $exception
-     * @param string $part
+     * @param string                   $part
      */
     public function testClassPartNotFound($fileName, $exception, $part): void
     {
@@ -100,6 +101,11 @@ class FailTest extends AbstractTest
             $dir.'/ConstantNotFound.php',
             ConstantNotFoundException::class,
         ];
+
+        yield [
+            $dir.'/ErrorAnnotationClass.php',
+            WrongAnnotationTypeException::class,
+        ];
     }
 
     /**
@@ -116,7 +122,7 @@ class FailTest extends AbstractTest
         yield [
             $dir.'/InterpreterClassTest.php',
             ClassPartNotFoundException::class,
-            LexedPartInterface::FUNCTION_PART,
+            LexedPartInterface::METHOD_PART,
         ];
 
         yield [

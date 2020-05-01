@@ -10,16 +10,14 @@
 
 declare(strict_types=1);
 
-namespace Aplorm\Interpreter\Exception;
+namespace Aplorm\Interpreter\Tests\Sample;
 
-use Exception;
+use Aplorm\Interpreter\Tests\Sample\TestAnnotations\ErrorAnnotation;
 
-class InvalidAnnotationConfigurationException extends Exception
+/**
+ * class comment.
+ * @ErrorAnnotation()
+ */
+class ErrorAnnotationClass
 {
-    private const CODE = 0X494;
-
-    public function __construct(string $message)
-    {
-        parent::__construct($message, self::CODE);
-    }
 }

@@ -16,7 +16,7 @@ use Exception;
 
 class ClassPartNotFoundException extends Exception
 {
-    private const CODE = 0X4C3;
+    private const CODE = 0X492;
 
     public function __construct(string $partName)
     {

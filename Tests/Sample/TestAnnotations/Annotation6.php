@@ -2,7 +2,9 @@
 
 namespace Aplorm\Interpreter\Tests\Sample\TestAnnotations;
 
-class Annotation6
+use Aplorm\Common\DataConfigurator\AnnotationInterface;
+
+class Annotation6 implements AnnotationInterface
 {
     public $data;
 
