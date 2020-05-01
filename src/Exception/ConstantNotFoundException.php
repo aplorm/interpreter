@@ -16,7 +16,7 @@ use Exception;
 
 class ConstantNotFoundException extends Exception
 {
-    private const CODE = 0X4C5;
+    private const CODE = 0X493;
 
     public function __construct(string $constant)
     {

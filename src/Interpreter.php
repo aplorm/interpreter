@@ -13,12 +13,14 @@ declare(strict_types=1);
 namespace Aplorm\Interpreter;
 
 use Aplorm\Common\Annotations\NativeAnnotations;
+use Aplorm\Common\DataConfigurator\AnnotationInterface;
 use Aplorm\Common\Interpreter\TypeInterface;
 use Aplorm\Common\Lexer\LexedPartInterface;
 use Aplorm\Interpreter\Exception\ClassNotFoundException;
 use Aplorm\Interpreter\Exception\ClassPartNotFoundException;
 use Aplorm\Interpreter\Exception\ConstantNotFoundException;
 use Aplorm\Interpreter\Exception\InvalidAnnotationConfigurationException;
+use Aplorm\Interpreter\Exception\WrongAnnotationTypeException;
 
 /**
  * Interprete data from Lexer and transform :
@@ -102,7 +104,7 @@ class Interpreter
      */
     protected static function handleFunctions(): void
     {
-        $parts = &self::getPart(LexedPartInterface::FUNCTION_PART);
+        $parts = &self::getPart(LexedPartInterface::METHOD_PART);
 
         foreach ($parts as $key => &$part) {
             self::handleFunction($part);
@@ -194,6 +196,10 @@ class Interpreter
         }
 
         $className = self::findClass($annotation['name']);
+
+        if (!is_a($className, AnnotationInterface::class, true)) {
+            throw new WrongAnnotationTypeException($className, AnnotationInterface::class);
+        }
 
         if ($namedParameter) {
             $annotation = new $className($annotationParameter);

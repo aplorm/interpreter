@@ -14,12 +14,12 @@ namespace Aplorm\Interpreter\Exception;
 
 use Exception;
 
-class InvalidAnnotationConfigurationException extends Exception
+class WrongAnnotationTypeException extends Exception
 {
-    private const CODE = 0X494;
+    private const CODE = 0X495;
 
-    public function __construct(string $message)
+    public function __construct(string $annotation, string $interface)
     {
-        parent::__construct($message, self::CODE);
+        parent::__construct('Annotation :\''.$annotation.'\' must be a '.$interface, self::CODE);
     }
 }

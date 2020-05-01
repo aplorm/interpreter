@@ -119,35 +119,35 @@ class SuccessTest extends AbstractTest
 
         yield [
             $dir.'/InterpreterClassTest.php',
-            '$float',
+            'float',
             'float',
             1.5,
         ];
 
         yield [
             $dir.'/InterpreterClassTest.php',
-            '$int',
+            'int',
             'int',
             1,
         ];
 
         yield [
             $dir.'/InterpreterClassTest.php',
-            '$longInt',
+            'longInt',
             'int',
             1000000,
         ];
 
         yield [
             $dir.'/InterpreterClassTest.php',
-            '$boolean',
+            'boolean',
             'bool',
             true,
         ];
 
         yield [
             $dir.'/InterpreterClassTest.php',
-            '$nullable',
+            'nullable',
             'bool',
             null,
         ];
