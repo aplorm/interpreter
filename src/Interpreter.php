@@ -84,6 +84,8 @@ class Interpreter
 
         if (isset($part['annotations']) && !empty($part['annotations'])) {
             self::handleAnnotations($part['annotations']);
+        } else {
+            $part['annotations'] = [];
         }
     }
 
@@ -120,7 +122,10 @@ class Interpreter
     {
         if (isset($function['annotations'])) {
             self::handleAnnotations($function['annotations']);
+        } else {
+            $function['annotations'] = [];
         }
+
         foreach ($function['parameters'] as $key => &$part) {
             self::handleVariable($part);
         }
@@ -133,6 +138,12 @@ class Interpreter
      */
     protected static function handleVariable(array &$variable): void
     {
+        if (isset($variable['annotations']) && !empty($variable['annotations'])) {
+            self::handleAnnotations($variable['annotations']);
+        } else {
+            $variable['annotations'] = [];
+        }
+
         if (isset($variable['isValueAConstant']) && $variable['isValueAConstant']) {
             if (false !== strstr($variable['value'], '::')) {
                 $parts = explode('::', $variable['value']);

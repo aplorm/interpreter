@@ -49,7 +49,7 @@ class InterpreterClassTest
     public static $astatic = 1;
 
     /**
-     * @Annotation6
+     * @Annotation6(false)
      */
     private float $float = 1.5;
     private int $int = 1;
