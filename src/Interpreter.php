@@ -174,6 +174,22 @@ class Interpreter
                 self::handleAnnotation($annotation);
                 $key = \get_class($annotation);
             }
+            if (isset($interpretedAnnotations[$key])) {
+                if (!\is_array($interpretedAnnotations[$key])) {
+                    $annotation = [
+                        $interpretedAnnotations[$key],
+                        $annotation,
+                    ];
+                    $interpretedAnnotations[$key] = $annotation;
+
+                    continue;
+                }
+
+                $interpretedAnnotations[$key][] = $annotation;
+
+                continue;
+            }
+
             $interpretedAnnotations[$key] = $annotation;
         }
 
