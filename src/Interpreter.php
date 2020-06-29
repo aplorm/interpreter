@@ -16,6 +16,7 @@ use Aplorm\Common\Annotations\NativeAnnotations;
 use Aplorm\Common\DataConfigurator\AnnotationInterface;
 use Aplorm\Common\Interpreter\TypeInterface;
 use Aplorm\Common\Lexer\LexedPartInterface;
+use Aplorm\Common\Memory\ObjectJar;
 use Aplorm\Interpreter\Exception\ClassNotFoundException;
 use Aplorm\Interpreter\Exception\ClassPartNotFoundException;
 use Aplorm\Interpreter\Exception\ConstantNotFoundException;
@@ -170,7 +171,7 @@ class Interpreter
     {
         $interpretedAnnotations = [];
         foreach ($annotations as $key => &$annotation) {
-            if (!\in_array($annotation['name'], NativeAnnotations::TYPE_ANNOTATIONS, true)) {
+            if (\is_array($annotation) && \is_array($annotation['name']) && !\in_array($annotation['name'], NativeAnnotations::TYPE_ANNOTATIONS, true)) {
                 self::handleAnnotation($annotation);
                 $key = \get_class($annotation);
             }
@@ -193,7 +194,7 @@ class Interpreter
             $interpretedAnnotations[$key] = $annotation;
         }
 
-        $annotations = $interpretedAnnotations;
+        $annotations = self::objectToWeakReference($interpretedAnnotations);
         unset($interpretedAnnotations);
     }
 
@@ -324,7 +325,6 @@ class Interpreter
         }
 
         $aliases = self::getPart(LexedPartInterface::CLASS_ALIASES_PART);
-
         if (isset($aliases[$alias])) {
             $fullyQualifiedName = $aliases[$alias];
         } elseif (class_exists($alias)) {
@@ -399,5 +399,32 @@ class Interpreter
         }
 
         return self::$parts[$partName];
+    }
+
+    /**
+     * @param array<AnnotationInterface|array<AnnotationInterface>>| AnnotationInterface $objects
+     *
+     * @throws \Exception
+     *
+     * @return mixed objects passed into function are transformed into WeakReference with the same array structure
+     */
+    protected static function objectToWeakReference($objects)
+    {
+        if (!\is_array($objects)) {
+            return ObjectJar::add('annotations', $objects);
+        }
+        $references = [];
+
+        foreach ($objects as $key => $object) {
+            if (\is_array($object)) {
+                $references[$key] = self::objectToWeakReference($object);
+
+                continue;
+            }
+
+            $references[$key] = ObjectJar::add('annotations', $object);
+        }
+
+        return $references;
     }
 }

@@ -67,10 +67,12 @@ class SuccessTest extends AbstractTest
         Interpreter::interprete($parts);
 
         self::assertArrayHasKey(Annotation::class, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations']);
-        self::assertTrue($parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation::class] instanceof Annotation);
+
+        self::assertTrue($parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation::class]->get() instanceof Annotation);
         self::assertIsArray($parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class]);
         self::assertCount(2, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class]);
-        self::assertEquals(SampleClass::A_CONSTANT, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class][1]->data);
+        self::assertEquals(SampleClass::A_CONSTANT, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class][1]->get()->data);
+
         foreach ($parts[LexedPartInterface::VARIABLE_PART] as $variable) {
             self::assertIsArray($variable['annotations']);
         }

@@ -27,7 +27,7 @@ use Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation;
  * class comment.
  *
  * @Annotation
- * @Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation2({
+ * @\Aplorm\Interpreter\Tests\Sample\TestAnnotations\Annotation2({
  *     "key.1": 1,
  *     "key.2": "string",
  *     "key.3": SampleClass::A_CONSTANT,
