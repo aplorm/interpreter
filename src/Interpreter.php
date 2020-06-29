@@ -12,7 +12,6 @@ declare(strict_types=1);
 
 namespace Aplorm\Interpreter;
 
-use Aplorm\Common\Annotations\NativeAnnotations;
 use Aplorm\Common\DataConfigurator\AnnotationInterface;
 use Aplorm\Common\Interpreter\TypeInterface;
 use Aplorm\Common\Lexer\LexedPartInterface;
@@ -171,10 +170,9 @@ class Interpreter
     {
         $interpretedAnnotations = [];
         foreach ($annotations as $key => &$annotation) {
-            if (\is_array($annotation) && \is_array($annotation['name']) && !\in_array($annotation['name'], NativeAnnotations::TYPE_ANNOTATIONS, true)) {
-                self::handleAnnotation($annotation);
-                $key = \get_class($annotation);
-            }
+            self::handleAnnotation($annotation);
+            $key = \get_class($annotation);
+
             if (isset($interpretedAnnotations[$key])) {
                 if (!\is_array($interpretedAnnotations[$key])) {
                     $annotation = [
@@ -411,6 +409,10 @@ class Interpreter
     protected static function objectToWeakReference($objects)
     {
         if (!\is_array($objects)) {
+            if (!\is_object($objects)) {
+                return $objects;
+            }
+
             return ObjectJar::add('annotations', $objects);
         }
         $references = [];
@@ -421,7 +423,6 @@ class Interpreter
 
                 continue;
             }
-
             $references[$key] = ObjectJar::add('annotations', $object);
         }
 

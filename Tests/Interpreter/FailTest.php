@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Aplorm\Interpreter\Tests\Interpreter;
 
 use Aplorm\Common\Lexer\LexedPartInterface;
+use Aplorm\Common\Memory\ObjectJar;
 use Aplorm\Common\Test\AbstractTest;
 use Aplorm\Interpreter\Exception\ClassNotFoundException;
 use Aplorm\Interpreter\Exception\ClassPartNotFoundException;
@@ -36,6 +37,7 @@ class FailTest extends AbstractTest
      */
     protected function doTearDown(): void
     {
+        ObjectJar::clean();
     }
 
     public static function setupBeforeClass(): void

@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Aplorm\Interpreter\Tests\Interpreter;
 
 use Aplorm\Common\Lexer\LexedPartInterface;
+use Aplorm\Common\Memory\ObjectJar;
 use Aplorm\Common\Test\AbstractTest;
 use Aplorm\Interpreter\Interpreter;
 use Aplorm\Interpreter\Tests\Sample\SampleClass;
@@ -34,6 +35,7 @@ class SuccessTest extends AbstractTest
      */
     protected function doTearDown(): void
     {
+        ObjectJar::clean();
     }
 
     public static function setupBeforeClass(): void
