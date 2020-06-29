@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Aplorm\Interpreter\Tests\Interpreter;
 
 use Aplorm\Common\Lexer\LexedPartInterface;
+use Aplorm\Common\Memory\ObjectJar;
 use Aplorm\Common\Test\AbstractTest;
 use Aplorm\Interpreter\Interpreter;
 use Aplorm\Interpreter\Tests\Sample\SampleClass;
@@ -34,6 +35,7 @@ class SuccessTest extends AbstractTest
      */
     protected function doTearDown(): void
     {
+        ObjectJar::clean();
     }
 
     public static function setupBeforeClass(): void
@@ -67,10 +69,12 @@ class SuccessTest extends AbstractTest
         Interpreter::interprete($parts);
 
         self::assertArrayHasKey(Annotation::class, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations']);
-        self::assertTrue($parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation::class] instanceof Annotation);
+
+        self::assertTrue($parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation::class]->get() instanceof Annotation);
         self::assertIsArray($parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class]);
         self::assertCount(2, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class]);
-        self::assertEquals(SampleClass::A_CONSTANT, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class][1]->data);
+        self::assertEquals(SampleClass::A_CONSTANT, $parts[LexedPartInterface::CLASS_NAME_PART]['annotations'][Annotation7::class][1]->get()->data);
+
         foreach ($parts[LexedPartInterface::VARIABLE_PART] as $variable) {
             self::assertIsArray($variable['annotations']);
         }
