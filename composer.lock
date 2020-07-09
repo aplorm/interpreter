@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/aplorm/lexer.git",
-                "reference": "319f977f71e5785074449ba3780c9269bb922a59"
+                "reference": "12b1cbcce4569489af57f9b0f25ca0cca0413fd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aplorm/lexer/zipball/319f977f71e5785074449ba3780c9269bb922a59",
-                "reference": "319f977f71e5785074449ba3780c9269bb922a59",
+                "url": "https://api.github.com/repos/aplorm/lexer/zipball/12b1cbcce4569489af57f9b0f25ca0cca0413fd3",
+                "reference": "12b1cbcce4569489af57f9b0f25ca0cca0413fd3",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +106,7 @@
                 "source": "https://github.com/aplorm/lexer/tree/master",
                 "issues": "https://github.com/aplorm/lexer/issues"
             },
-            "time": "2020-05-28T21:34:59+00:00"
+            "time": "2020-06-29T18:53:52+00:00"
         }
     ],
     "packages-dev": [

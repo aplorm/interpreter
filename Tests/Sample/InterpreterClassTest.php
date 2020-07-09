@@ -85,13 +85,13 @@ FOOBAR;
     private array $array = [
         ['A' => 'B'],
         ['A', 'B'],
-        'A',
+        'A'
     ];
 
     private array $array2 = [
         ['A' => 'B'],
         ['A', 'B'],
-        'A',
+        'A'
     ];
 
     /**
@@ -112,6 +112,16 @@ FOOBAR;
         return true;
     }
 
+    /**
+     * [mafunction description].
+     *
+     * @param string $param1 [description]
+     * @param array  $param2 [description]
+     *
+     * @return int|string
+     *
+     * @Annotation9(name="bla")
+     */
     public function mafunction4(
         string $param1,
         array $param2

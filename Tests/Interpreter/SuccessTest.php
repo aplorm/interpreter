@@ -78,6 +78,8 @@ class SuccessTest extends AbstractTest
         foreach ($parts[LexedPartInterface::VARIABLE_PART] as $variable) {
             self::assertIsArray($variable['annotations']);
         }
+
+        self::assertCount(1, $parts[LexedPartInterface::METHOD_PART]['mafunction']['annotations']);
     }
 
     /**
